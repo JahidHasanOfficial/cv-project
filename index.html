@@ -24,6 +24,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      min-height: 100vh;
       padding: 20px 0;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
@@ -88,12 +89,12 @@
     }
 
     .profile-img {
-      width: 100%;
-      aspect-ratio: 1 / 1.15;
+      width: 35mm;
+      height: 45mm;
       object-fit: cover;
-      border: 2px solid #0f3057;
+      border: none;
       border-radius: 4px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
     }
 
     /* Section Headers styling (overlapping circle & banner) */
@@ -488,8 +489,8 @@
     /* Floating Download Buttons (Screen only) */
     .download-buttons {
       position: fixed;
-      top: 30px;
-      right: 30px;
+      top: 40px;
+      right: 40px;
       display: flex;
       flex-direction: column;
       gap: 12px;
@@ -501,7 +502,7 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 11px 18px;
+      padding: 12px 20px;
       color: #ffffff;
       border: none;
       border-radius: 6px;
@@ -510,7 +511,7 @@
       font-weight: 600;
       cursor: pointer;
       text-decoration: none;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
       transition: all 0.2s ease;
     }
 
@@ -532,11 +533,11 @@
     }
 
     .btn-docx {
-      background-color: #2b579a;
+      background-color: #0f3057;
     }
 
     .btn-docx:hover {
-      background-color: #1e3f70;
+      background-color: #0a223f;
     }
 
     .btn-download svg {
@@ -575,7 +576,6 @@
       
       <!-- Profile Picture -->
       <div class="profile-container">
-        <!-- We use the local path of the generated image -->
         <img src="profile.png" alt="Sumi Akter" class="profile-img">
       </div>
 
@@ -600,7 +600,7 @@
           </li>
           <li class="sidebar-item">
             <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
-            <div class="sidebar-text">House-180, Road-3, Block-D, Pallabi, Mirpur, Dhaka-1216</div>
+            <div class="sidebar-text">Mirpur, Dhaka, Bangladesh</div>
           </li>
         </ul>
       </div>
@@ -615,8 +615,8 @@
       </div>
       
       <div class="sidebar-content">
-        <p>Bangladesh Nursing and Midwifery Council (BNMC)</p>
-        <p style="margin-top: 3px;"><span class="sidebar-bold-label">Registration No.:</span> <strong>102293</strong></p>
+        <p>Bangladesh Nursing & Midwifery Council (BNMC)</p>
+        <p style="margin-top: 3px;"><span class="sidebar-bold-label">Registration No:</span> <strong>102293</strong></p>
       </div>
 
       <!-- EDUCATION -->
@@ -633,34 +633,29 @@
         <div class="edu-item">
           <div class="edu-title">Diploma in Nursing Science & Midwifery</div>
           <div class="edu-details">
-            <div class="edu-row"><span class="sidebar-bold-label">• Institute:</span> Ibn Sina Nursing Institute, Kallyanpur, Dhaka</div>
-            <div class="edu-row"><span class="sidebar-bold-label">• Board:</span> Bangladesh Nursing & Midwifery Council (BNMC)</div>
-            <div class="edu-row"><span class="sidebar-bold-label">• Result:</span> 3.83 (out of 4)</div>
+            <div class="edu-row"><span class="sidebar-bold-label">• Institute:</span> IBN Sina Nursing Institute</div>
+            <div class="edu-row"><span class="sidebar-bold-label">• Result:</span> CGPA 3.83/4.00</div>
             <div class="edu-row"><span class="sidebar-bold-label">• Passing Year:</span> 2025</div>
           </div>
         </div>
 
         <!-- HSC -->
         <div class="edu-item">
-          <div class="edu-title">Higher School Certificate (H.S.C)</div>
+          <div class="edu-title">Higher Secondary Certificate (HSC)</div>
           <div class="edu-details">
             <div class="edu-row"><span class="sidebar-bold-label">• Institute:</span> Dr. Mohammad Shahidullah Adarsha Uchcha Madymic Bidyapith</div>
-            <div class="edu-row"><span class="sidebar-bold-label">• Group:</span> Business Studies</div>
-            <div class="edu-row"><span class="sidebar-bold-label">• Result:</span> 3.75 (out of 5)</div>
-            <div class="edu-row"><span class="sidebar-bold-label">• Passing Year:</span> 2020</div>
-            <div class="edu-row"><span class="sidebar-bold-label">• Board:</span> Dhaka</div>
+            <div class="edu-row"><span class="sidebar-bold-label">• Group:</span> Business Studies | <span class="sidebar-bold-label">Year:</span> 2020</div>
+            <div class="edu-row"><span class="sidebar-bold-label">• Result:</span> GPA 3.75/5.00</div>
           </div>
         </div>
 
         <!-- SSC -->
         <div class="edu-item">
-          <div class="edu-title">Secondary School Certificate (S.S.C)</div>
+          <div class="edu-title">Secondary School Certificate (SSC)</div>
           <div class="edu-details">
-            <div class="edu-row"><span class="sidebar-bold-label">• Institute:</span> Shaheed Zia Girls Laboratory Institute</div>
-            <div class="edu-row"><span class="sidebar-bold-label">• Group:</span> Business Studies</div>
-            <div class="edu-row"><span class="sidebar-bold-label">• Result:</span> 3.44 (out of 5)</div>
-            <div class="edu-row"><span class="sidebar-bold-label">• Passing Year:</span> 2018</div>
-            <div class="edu-row"><span class="sidebar-bold-label">• Board:</span> Dhaka</div>
+            <div class="edu-row"><span class="sidebar-bold-label">• Institute:</span> Shaheed Zia Girls Lab. Institute</div>
+            <div class="edu-row"><span class="sidebar-bold-label">• Group:</span> Business Studies | <span class="sidebar-bold-label">Year:</span> 2018</div>
+            <div class="edu-row"><span class="sidebar-bold-label">• Result:</span> GPA 3.44/5.00</div>
           </div>
         </div>
       </div>
@@ -676,8 +671,8 @@
       
       <div class="sidebar-content">
         <ul class="bullet-list">
-          <li><span class="sidebar-bold-label">Native Language (Bengali):</span> Excellent in reading, writing and understanding.</li>
-          <li><span class="sidebar-bold-label">Second Language (English):</span> Excellent in reading, writing and understanding.</li>
+          <li><span class="sidebar-bold-label">Bengali:</span> Native</li>
+          <li><span class="sidebar-bold-label">English:</span> Professional Working Proficiency</li>
         </ul>
       </div>
 
@@ -692,11 +687,12 @@
       
       <div class="sidebar-content">
         <ul class="bullet-list">
-          <li>Proficient in Microsoft Office (Word, Excel, PowerPoint)</li>
-          <li>Internet Browsing, Professional Emailing, and Medical Record Systems</li>
+          <li>Microsoft Office</li>
+          <li>Hospital Information System (HIS)</li>
+          <li>Electronic Medical Record (EMR)</li>
+          <li>Internet & Email</li>
         </ul>
       </div>
-
     </div>
 
     <!-- RIGHT MAIN PANEL -->
@@ -705,7 +701,8 @@
       <!-- Candidate Name & Contact Info Header -->
       <div class="main-header">
         <h1 class="candidate-name">SUMI AKTER</h1>
-        <h2 class="candidate-title">SENIOR STAFF NURSE (BNMC REGISTERED)</h2>
+        <h2 class="candidate-title">BNMC Registered Staff Nurse</h2>
+        <div style="font-size: 9px; font-weight: 600; color: #0f3057; margin-top: 2px; text-transform: uppercase; letter-spacing: 0.5px;">Operation Theatre (OT) | Post-Operative Care | Emergency Care</div>
         <div class="header-divider"></div>
         <div class="header-contact-row">
           <div class="header-contact-item">
@@ -720,7 +717,7 @@
           <div class="header-contact-divider"></div>
           <div class="header-contact-item">
             <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
-            <span>House-180, Road-3, Block-D, Pallabi, Mirpur, Dhaka-1216</span>
+            <span>Mirpur, Dhaka, Bangladesh</span>
           </div>
         </div>
       </div>
@@ -735,7 +732,7 @@
       </div>
       
       <div class="section-content summary-text">
-        Compassionate and dedicated BNMC Registered Nurse with experience in the Operation Theatre (OT) and Post-Operative Ward at Alok Mother & Child Care Hospital. Skilled in perioperative care, patient monitoring, medication administration, and infection control. Committed to delivering safe, high-quality, patient-centered care.
+        Compassionate, detail-oriented BNMC Registered Staff Nurse with clinical experience specializing in Operation Theatre (OT), Post-Operative Care, and Emergency Care. Proven expertise in pre-operative readiness, perioperative assistance, patient safety, and immediate post-operative monitoring. Adept at administering medications, maintaining precise clinical documentation (EMR/EHR), and implementing strict infection control protocols. A collaborative healthcare professional dedicated to delivering high-quality, patient-centered care.
       </div>
 
       <!-- WORK EXPERIENCE -->
@@ -744,24 +741,23 @@
           <!-- Briefcase Icon -->
           <svg viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.9 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
         </div>
-        <div class="title-bar">WORK EXPERIENCE</div>
+        <div class="title-bar">PROFESSIONAL EXPERIENCE</div>
       </div>
       
       <div class="section-content">
         <div class="job-header">
           <span>Senior Staff Nurse</span>
-          <span class="job-duration-text">November 2025 – Present</span>
+          <span class="job-duration-text">Nov 2025 – Present</span>
         </div>
         <div class="job-company">Alok Mother & Child Care Hospital</div>
-        <div class="job-dept">Department: Operation Theatre (OT) & Post-Operative Ward</div>
         
-        <ul class="job-bullets">
-          <li>Prepare patients for surgery and ensure pre-operative safety.</li>
-          <li>Maintain a sterile Operation Theatre environment and assist surgical teams.</li>
-          <li>Monitor patients in the immediate post-operative period and check vital signs.</li>
-          <li>Administer prescribed medications and maintain accurate documentation.</li>
-          <li>Ensure strict infection prevention and patient safety protocols.</li>
-          <li>Collaborate with multidisciplinary teams to deliver quality care.</li>
+        <ul class="job-bullets" style="margin-top: 3px;">
+          <li>Prepared patients for surgical procedures and ensured pre-operative readiness.</li>
+          <li>Assisted during surgical procedures and monitored patient safety.</li>
+          <li>Administered medications and maintained accurate nursing documentation.</li>
+          <li>Monitored post-operative patients and responded promptly to clinical changes.</li>
+          <li>Followed infection prevention and hospital safety protocols.</li>
+          <li>Collaborated with multidisciplinary healthcare teams.</li>
         </ul>
       </div>
 
@@ -777,12 +773,9 @@
       <div class="section-content">
         <div class="job-header">
           <span>Intern Nurse</span>
-          <span class="job-duration-text">15 March 2025 – 15 September 2025</span>
+          <span class="job-duration-text">15 Mar 2025 – 15 Sep 2025</span>
         </div>
-        <div class="job-duration-row">
-          <span class="job-company">IBN Sina Medical College Hospital</span>
-          <span class="job-duration-text">Duration: 6 Months</span>
-        </div>
+        <div class="job-company">IBN Sina Medical College Hospital</div>
         
         <div class="rotations-container">
           <div class="rotations-title">Clinical Rotations:</div>
@@ -791,14 +784,15 @@
             <span class="rotation-pill">CCU</span>
             <span class="rotation-pill">Emergency</span>
             <span class="rotation-pill">Operation Theatre (OT)</span>
-            <span class="rotation-pill">Surgery Ward</span>
-            <span class="rotation-pill">Medicine Ward</span>
+            <span class="rotation-pill">Orthopedic</span>
+            <span class="rotation-pill">Surgery</span>
+            <span class="rotation-pill">Medicine</span>
             <span class="rotation-pill">Gynae & Obstetrics</span>
             <span class="rotation-pill">Cabin</span>
           </div>
         </div>
 
-        <ul class="job-bullets">
+        <ul class="job-bullets" style="margin-top: 5px;">
           <li>Assisted in direct patient care and emergency management under supervision.</li>
           <li>Performed IV cannulation, medication administration, wound dressing, and catheterization.</li>
           <li>Maintained clinical documentation and assisted in ward activities.</li>
@@ -819,7 +813,7 @@
           <span>Shaheed Suhrawardy Medical College Hospital</span>
           <span class="job-duration-text">Duration: 1 Month</span>
         </div>
-        <ul class="job-bullets" style="margin-top: 2px;">
+        <ul class="job-bullets" style="margin-top: 3px;">
           <li>Practiced basic nursing care and assisted in patient observation.</li>
           <li>Gained hands-on experience in ward management and patient support.</li>
         </ul>
@@ -831,56 +825,53 @@
           <!-- Gear Icon -->
           <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
         </div>
-        <div class="title-bar">CORE CLINICAL SKILLS & COMPETENCIES</div>
+        <div class="title-bar">CORE CLINICAL SKILLS</div>
       </div>
       
       <div class="section-content">
         <div class="skills-grid">
           <ul class="skills-col">
-            <li>Patient Assessment & Vital Signs Monitoring (BP, Temperature, Pulse, SpO2)</li>
-            <li>Medication Administration & Clinical Treatment Support</li>
-            <li>Pre-operative Preparation & Post-operative Recovery Care</li>
-            <li>Clinical Documentation & Patient Record Management (EHR/EMR)</li>
+            <li>Patient Assessment</li>
+            <li>Vital Signs Monitoring</li>
+            <li>Medication Administration</li>
+            <li>IV Cannulation</li>
+            <li>Surgical Assistance</li>
+            <li>Infection Prevention & Control</li>
           </ul>
           <ul class="skills-col">
-            <li>Emergency Care Response</li>
-            <li>Doctor Assistance</li>
-            <li>Infection Control & Prevention</li>
-            <li>IV Cannulation</li>
             <li>Wound Dressing</li>
-            <li>Catheterization</li>
             <li>Oxygen Therapy</li>
+            <li>Catheterization</li>
+            <li>Clinical Documentation (EMR/EHR)</li>
+            <li>Emergency Care</li>
+            <li>Patient Safety</li>
           </ul>
         </div>
       </div>
 
       <!-- REFERENCES & PERSONAL INFORMATION SIDE-BY-SIDE -->
-      <div class="footer-sections-row">
+      <div class="footer-sections-row" style="margin-top: 5px;">
         
         <!-- REFERENCES -->
         <div class="footer-sections-col">
-          <div class="section-header">
+          <div class="section-header" style="margin-top: 0;">
             <div class="icon-circle">
-              <!-- References (Contact card) Icon -->
+              <!-- References Icon -->
               <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z"/></svg>
             </div>
             <div class="title-bar">REFERENCES</div>
           </div>
           
           <div class="section-content">
-            <div class="references-grid">
+            <div class="references-grid" style="display: flex; flex-direction: column; gap: 4px;">
               <div class="ref-card">
                 <div class="ref-name">Zibon Nahar</div>
-                <div>Principal</div>
-                <div>IBN Sina Nursing Institute</div>
-                <div>Kallyanpur, Dhaka.</div>
+                <div>Principal, IBN Sina Nursing Institute</div>
                 <div>Mobile: 01762040565</div>
               </div>
-              <div class="ref-card">
+              <div class="ref-card" style="margin-top: 3px;">
                 <div class="ref-name">Dewan Shahhawat</div>
-                <div>Lecturer</div>
-                <div>IBN Sina Nursing Institute</div>
-                <div>Kallyanpur, Dhaka.</div>
+                <div>Lecturer, IBN Sina Nursing Institute</div>
                 <div>Mobile: 0173512261</div>
               </div>
             </div>
@@ -889,7 +880,7 @@
 
         <!-- PERSONAL INFORMATION -->
         <div class="footer-sections-col">
-          <div class="section-header">
+          <div class="section-header" style="margin-top: 0;">
             <div class="icon-circle">
               <!-- Info Icon -->
               <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
@@ -904,6 +895,10 @@
                 <td>: 13th July 2003</td>
               </tr>
               <tr>
+                <td class="label">Gender</td>
+                <td>: Female</td>
+              </tr>
+              <tr>
                 <td class="label">Religion</td>
                 <td>: Islam</td>
               </tr>
@@ -912,11 +907,15 @@
                 <td>: Married</td>
               </tr>
               <tr>
+                <td class="label">Nationality</td>
+                <td>: Bangladeshi</td>
+              </tr>
+              <tr>
                 <td class="label">Blood Group</td>
                 <td>: A+</td>
               </tr>
               <tr>
-                <td class="label">Permanent Address</td>
+                <td class="label">Permanent Addr.</td>
                 <td>: Vill: 180, R#03, Post: Mirpur, Thana: Pallabi, Dist: Dhaka.</td>
               </tr>
             </table>
@@ -925,34 +924,21 @@
 
       </div>
 
-      <!-- DECLARATION & SIGNATURE -->
+      <!-- Declaration & Signature Block -->
       <div class="declaration-container">
-        <div class="section-header">
-          <div class="icon-circle">
-            <!-- Edit Icon -->
-            <svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+        <div class="section-content" style="font-size: 8px; line-height: 1.3; margin-top: 6px; color: #555555; text-align: justify;">
+          <strong>Declaration:</strong> I hereby declare that all the information provided in this resume is true and correct to the best of my knowledge and belief.
+        </div>
+                <div class="signature-container" style="margin-top: 25px;">
+          <div class="signature-block">
+            <div class="signature-line"></div>
+            <div class="signature-name">Sumi Akter</div>
           </div>
-          <div class="title-bar">DECLARATION</div>
         </div>
-        
-        <div class="section-content">
-          <p class="summary-text">
-            I hereby declare that all the information provided in this resume is true and correct to the best of my knowledge and belief.
-          </p>
-        </div>
-      </div>
 
-      <!-- SIGNATURE BLOCK -->
-      <div class="signature-container">
-        <div class="signature-block">
-          <div class="signature-space" style="height: 50px;"></div>
-          <div class="signature-line"></div>
-          <div class="signature-name">Sumi Akter</div>
-        </div>
       </div>
 
     </div>
-
   </div>
 
 </body>
