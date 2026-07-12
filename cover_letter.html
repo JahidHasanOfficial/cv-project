@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sumi Akter - Cover Letter Generator</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Global Reset & Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #e2e8f0;
+      color: #333333;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 30px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* Outer Wrapper for Form + A4 Page */
+    .app-container {
+      display: flex;
+      gap: 30px;
+      max-width: 1250px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* Settings Panel (Control Panel) */
+    .settings-panel {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      width: 340px;
+      height: fit-content;
+      position: sticky;
+      top: 30px;
+      border-top: 5px solid #0f3057;
+    }
+
+    .settings-panel h3 {
+      font-size: 16px;
+      color: #0f3057;
+      margin-bottom: 15px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .form-group {
+      margin-bottom: 12px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 10px;
+      font-weight: 700;
+      color: #555555;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-group input, 
+    .form-group textarea {
+      width: 100%;
+      padding: 8px 10px;
+      font-size: 12.5px;
+      border: 1.5px solid #d1d5db;
+      border-radius: 4px;
+      font-family: inherit;
+      color: #333333;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-group input:focus, 
+    .form-group textarea:focus {
+      border-color: #0f3057;
+      box-shadow: 0 0 0 3px rgba(15, 48, 87, 0.1);
+      outline: none;
+    }
+
+    .preset-label {
+      display: block;
+      font-size: 10px;
+      font-weight: 700;
+      color: #555555;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      text-transform: uppercase;
+      transition: background-color 0.2s, transform 0.1s;
+    }
+
+    .btn-primary {
+      background-color: #0f3057;
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background-color: #1b497d;
+    }
+
+    .btn-secondary {
+      background-color: #f3f4f6;
+      color: #374151;
+      border: 1.5px solid #d1d5db;
+    }
+
+    .btn-secondary:hover {
+      background-color: #e5e7eb;
+    }
+
+    .btn-preset {
+      padding: 6px 10px;
+      font-size: 10.5px;
+      font-weight: 700;
+      border: 1.5px solid #0f3057;
+      background-color: #ffffff;
+      color: #0f3057;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+      flex: 1;
+      text-align: center;
+    }
+
+    .btn-preset:hover, .btn-preset.active {
+      background-color: #0f3057;
+      color: #ffffff;
+    }
+
+    .btn:active, .btn-preset:active {
+      transform: scale(0.98);
+    }
+
+    /* A4 Page Container */
+    .letter-page {
+      background-color: #ffffff;
+      width: 210mm;
+      height: 297mm;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+      padding: 15mm 20mm;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Header Area (Matches Resume) */
+    .main-header {
+      margin-bottom: 25px;
+    }
+
+    .candidate-name {
+      font-size: 28px;
+      font-weight: 800;
+      color: #0f3057;
+      line-height: 1.1;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .candidate-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #0f3057;
+      margin-top: 4px;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+    }
+
+    .header-divider {
+      width: 100%;
+      height: 2px;
+      background-color: #0f3057;
+      margin-top: 8px;
+      margin-bottom: 8px;
+    }
+
+    .header-contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 15px;
+      font-size: 10px;
+      font-weight: 500;
+      color: #333333;
+    }
+
+    .header-contact-item {
+      display: flex;
+      align-items: center;
+    }
+
+    .header-contact-item svg {
+      width: 12px;
+      height: 12px;
+      fill: #0f3057;
+      margin-right: 5px;
+      flex-shrink: 0;
+    }
+
+    .header-contact-divider {
+      width: 1px;
+      height: 12px;
+      background-color: #cccccc;
+    }
+
+    /* Letter Body Styles */
+    .letter-body {
+      font-size: 12.5px;
+      line-height: 1.6;
+      color: #333333;
+      text-align: justify;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .letter-date {
+      margin-top: 10px;
+      font-weight: 500;
+    }
+
+    .recipient-info {
+      line-height: 1.4;
+      margin-bottom: 5px;
+    }
+
+    .recipient-company {
+      font-weight: 700;
+      color: #0f3057;
+    }
+
+    .letter-subject {
+      font-weight: 700;
+      color: #0f3057;
+      text-transform: uppercase;
+      border-bottom: 1px solid #0f3057;
+      padding-bottom: 2px;
+      display: inline-block;
+      margin-bottom: 5px;
+    }
+
+    .letter-salutation {
+      font-weight: 600;
+    }
+
+    .letter-paragraphs p {
+      margin-bottom: 12px;
+    }
+
+    .letter-paragraphs p:last-child {
+      margin-bottom: 0;
+    }
+
+    .letter-closing {
+      margin-top: 20px;
+      line-height: 1.4;
+    }
+
+    .signature-space {
+      height: 45px;
+    }
+
+    .signature-name {
+      font-weight: 700;
+      color: #0f3057;
+    }
+
+    .signature-title {
+      font-size: 11px;
+      color: #555555;
+    }
+
+    /* Print styling rules */
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    @media print {
+      body {
+        background-color: #ffffff;
+        padding: 0;
+        margin: 0;
+        display: block;
+      }
+      .app-container {
+        display: block;
+        gap: 0;
+        max-width: none;
+        width: auto;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .letter-page {
+        box-shadow: none;
+        width: 210mm;
+        height: 297mm;
+        padding: 15mm 20mm;
+        margin: 0;
+        page-break-after: avoid;
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- Settings Panel (Hidden on Print) -->
+    <div class="settings-panel no-print">
+      <h3>
+        <svg style="width: 18px; height: 18px; fill: currentColor;" viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+        Cover Letter Settings
+      </h3>
+
+      <!-- Presets Selector -->
+      <div class="form-group">
+        <span class="preset-label">Quick Presets</span>
+        <div style="display: flex; gap: 10px;">
+          <button type="button" class="btn-preset active" id="preset-unico">Unico Hospitals</button>
+          <button type="button" class="btn-preset" id="preset-general">General / Other</button>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="input-date">Application Date</label>
+        <input type="text" id="input-date" placeholder="e.g. July 12, 2026">
+      </div>
+      
+      <div class="form-group">
+        <label for="input-recipient">Recipient Title</label>
+        <input type="text" id="input-recipient" value="The General Manager - Human Resources">
+      </div>
+      
+      <div class="form-group">
+        <label for="input-hospital">Hospital Name</label>
+        <input type="text" id="input-hospital" value="Unico Hospitals">
+      </div>
+      
+      <div class="form-group">
+        <label for="input-address">Hospital Address</label>
+        <textarea id="input-address" rows="2">23 Green Road, Dhaka-1205, Bangladesh</textarea>
+      </div>
+      
+      <div class="form-group">
+        <label for="input-title">Job Title</label>
+        <input type="text" id="input-title" value="Senior Staff Nurse">
+      </div>
+
+      <div class="form-group">
+        <label for="input-facility">Facility Description</label>
+        <input type="text" id="input-facility" value="your 250-bed multi-specialty facility">
+      </div>
+
+      <div class="form-group">
+        <label for="input-motto">Reason for Joining / Slogan</label>
+        <textarea id="input-motto" rows="3">your reputation for providing outstanding, compassionate care ("Care, as unique as you")</textarea>
+      </div>
+
+      <div class="button-group">
+        <button type="button" class="btn btn-primary" id="btn-print" style="width: 100%;">
+          <svg style="width: 14px; height: 14px; fill: currentColor;" viewBox="0 0 24 24"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg>
+          Print PDF
+        </button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 11px; color: #555; line-height: 1.4; border-top: 1px dashed #ccc; padding-top: 10px;">
+        <strong>Instructions:</strong>
+        <ul style="padding-left: 15px; margin-top: 5px;">
+          <li>Select a preset or edit any field to update the letter.</li>
+          <li>Click <strong>Print PDF</strong> (or <strong>Ctrl+P</strong>) to save or print.</li>
+          <li>The settings panel will automatically hide in the printout!</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- A4 Letter Page Container -->
+    <div class="letter-page">
+      
+      <!-- Candidate Name & Contact Info Header (Matches Resume) -->
+      <div class="main-header">
+        <h1 class="candidate-name">SUMI AKTER</h1>
+        <h2 class="candidate-title">BNMC Registered Staff Nurse</h2>
+        <div style="font-size: 10px; font-weight: 600; color: #0f3057; margin-top: 3px; text-transform: uppercase; letter-spacing: 0.5px;">Operation Theatre (OT) | Post-Operative Care | Emergency Care | Gynae & Obstetrics</div>
+        <div class="header-divider"></div>
+        <div class="header-contact-row">
+          <div class="header-contact-item">
+            <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.15 15.15 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.11-.27 11.36 11.36 0 0 0 4.25 1.21 1 1 0 0 1 .8 1v3.5a1 1 0 0 1-1 1A16 16 0 0 1 3 5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 .8 11.36 11.36 0 0 0 1.21 4.25 1 1 0 0 1-.27 1.11z"/></svg>
+            <span>+880 1771 665392</span>
+          </div>
+          <div class="header-contact-divider"></div>
+          <div class="header-contact-item">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            <span>sumiakter102293@gmail.com</span>
+          </div>
+          <div class="header-contact-divider"></div>
+          <div class="header-contact-item">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+            <span>Mirpur, Dhaka, Bangladesh</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Letter Content -->
+      <div class="letter-body">
+        <div class="letter-date" id="letter-date">Date: July 12, 2026</div>
+
+        <div class="recipient-info">
+          <span id="letter-recipient">The General Manager - Human Resources</span><br>
+          <span class="recipient-company" id="letter-hospital">Unico Hospitals</span><br>
+          <span id="letter-address">23 Green Road, Dhaka-1205, Bangladesh</span>
+        </div>
+
+        <div class="subject-line">
+          <span class="letter-subject">Subject: Application for the Position of <span id="letter-subject-title">Senior Staff Nurse</span></span>
+        </div>
+
+        <div class="letter-salutation">Dear Sir/Madam,</div>
+
+        <div class="letter-paragraphs">
+          <p>I am writing to express my strong interest in the <span id="letter-body-title">Senior Staff Nurse</span> position at <span id="letter-body-hospital-1">Unico Hospitals</span>, as advertised in your recent job circular. With my professional qualification as a BNMC Registered Nurse and clinical experience specializing in Operation Theatre (OT), Post-Operative Care, and Emergency Care, I am confident in my ability to contribute effectively to the dedicated healthcare team at <span id="letter-body-facility">your 250-bed multi-specialty facility</span>.</p>
+          
+          <p>I hold a Diploma in Nursing Science & Midwifery from the IBN Sina Nursing Institute, recognized by the Bangladesh Nursing & Midwifery Council (BNMC Registration No: 102293), graduating with a CGPA of 3.83/4.00. Currently, I am serving as a Senior Staff Nurse at Alok Mother & Child Care Hospital, where I actively manage pre-operative readiness, assist in perioperative procedures, monitor post-operative patients, and maintain high standards of patient safety and infection control. Prior to this, I completed a comprehensive 6-month clinical internship at IBN Sina Medical College Hospital with rotations in the Operation Theatre (OT), ICU, CCU, and Emergency departments.</p>
+
+          <p>These experiences have equipped me with strong clinical hands-on skills, including patient assessment, vital signs monitoring, IV cannulation, medication administration, and precise EMR/EHR clinical documentation. I am well-versed in maintaining a sterile environment, following strict infection control protocols, and collaborating effectively with multidisciplinary medical teams to provide compassionate, patient-centered care.</p>
+
+          <p>I am highly motivated to join <span id="letter-body-hospital-2">Unico Hospitals</span> because of <span id="letter-body-motto">your reputation for providing outstanding, compassionate care ("Care, as unique as you")</span>. I am eager to bring my nursing skills, dedication, and patient-first attitude to your esteemed hospital.</p>
+
+          <p>Please find attached my updated resume, BNMC registration certificate, and recent passport-size photograph for your kind review. I would appreciate the opportunity to discuss how my skills and experience can contribute to the nursing team at <span id="letter-body-hospital-3">Unico Hospitals</span>.</p>
+        </div>
+
+        <div class="letter-closing">
+          Thank you for your time and consideration. I look forward to your positive response.<br><br>
+          Sincerely,<br>
+          <div class="signature-space"></div>
+          <span class="signature-name">Sumi Akter</span><br>
+          <span class="signature-title">BNMC Registered Staff Nurse</span><br>
+          <span class="signature-title">BNMC Registration No: 102293</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Inputs
+      const inputDate = document.getElementById('input-date');
+      const inputRecipient = document.getElementById('input-recipient');
+      const inputHospital = document.getElementById('input-hospital');
+      const inputAddress = document.getElementById('input-address');
+      const inputTitle = document.getElementById('input-title');
+      const inputFacility = document.getElementById('input-facility');
+      const inputMotto = document.getElementById('input-motto');
+
+      // Preset Buttons
+      const presetUnico = document.getElementById('preset-unico');
+      const presetGeneral = document.getElementById('preset-general');
+      const btnPrint = document.getElementById('btn-print');
+
+      // Target Elements in Letter
+      const letterDate = document.getElementById('letter-date');
+      const letterRecipient = document.getElementById('letter-recipient');
+      const letterHospital = document.getElementById('letter-hospital');
+      const letterAddress = document.getElementById('letter-address');
+      const letterSubjectTitle = document.getElementById('letter-subject-title');
+      const letterBodyTitle = document.getElementById('letter-body-title');
+      const letterBodyHospital1 = document.getElementById('letter-body-hospital-1');
+      const letterBodyHospital2 = document.getElementById('letter-body-hospital-2');
+      const letterBodyHospital3 = document.getElementById('letter-body-hospital-3');
+      const letterBodyFacility = document.getElementById('letter-body-facility');
+      const letterBodyMotto = document.getElementById('letter-body-motto');
+
+      // Presets Data
+      const unicoDefaults = {
+        recipient: "The General Manager - Human Resources",
+        hospital: "Unico Hospitals",
+        address: "23 Green Road, Dhaka-1205, Bangladesh",
+        title: "Senior Staff Nurse",
+        facility: "your 250-bed multi-specialty facility",
+        motto: 'your reputation for providing outstanding, compassionate care ("Care, as unique as you")'
+      };
+
+      const generalDefaults = {
+        recipient: "The Human Resources Manager",
+        hospital: "[Hospital/Clinic Name]",
+        address: "[Hospital Address, e.g. Dhanmondi, Dhaka]",
+        title: "Senior Staff Nurse",
+        facility: "your esteemed organization",
+        motto: "your outstanding reputation in the healthcare sector and dedication to clinical excellence"
+      };
+
+      // Set today's date automatically in the input
+      const getFormattedToday = () => {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return new Date().toLocaleDateString('en-US', options);
+      };
+      
+      const todayDate = getFormattedToday();
+      inputDate.value = todayDate;
+
+      // Update function
+      const updateLetter = () => {
+        letterDate.textContent = "Date: " + inputDate.value;
+        letterRecipient.textContent = inputRecipient.value;
+        letterHospital.textContent = inputHospital.value;
+        
+        // Preserve newlines for address
+        letterAddress.innerHTML = inputAddress.value.replace(/\n/g, '<br>');
+
+        letterSubjectTitle.textContent = inputTitle.value;
+        letterBodyTitle.textContent = inputTitle.value;
+        
+        const hName = inputHospital.value || "the hospital";
+        letterBodyHospital1.textContent = hName;
+        letterBodyHospital2.textContent = hName;
+        letterBodyHospital3.textContent = hName;
+
+        letterBodyFacility.textContent = inputFacility.value;
+        letterBodyMotto.textContent = inputMotto.value;
+      };
+
+      // Event listeners for inputs
+      const elements = [inputDate, inputRecipient, inputHospital, inputAddress, inputTitle, inputFacility, inputMotto];
+      elements.forEach(elem => {
+        elem.addEventListener('input', updateLetter);
+      });
+
+      // Load Preset function
+      const loadPreset = (data) => {
+        inputRecipient.value = data.recipient;
+        inputHospital.value = data.hospital;
+        inputAddress.value = data.address;
+        inputTitle.value = data.title;
+        inputFacility.value = data.facility;
+        inputMotto.value = data.motto;
+        updateLetter();
+      };
+
+      // Preset Buttons Click handlers
+      presetUnico.addEventListener('click', () => {
+        presetUnico.classList.add('active');
+        presetGeneral.classList.remove('active');
+        loadPreset(unicoDefaults);
+      });
+
+      presetGeneral.addEventListener('click', () => {
+        presetGeneral.classList.add('active');
+        presetUnico.classList.remove('active');
+        loadPreset(generalDefaults);
+      });
+
+      // Print Button Click
+      btnPrint.addEventListener('click', () => {
+        window.print();
+      });
+
+      // Run initial load
+      updateLetter();
+    });
+  </script>
+</body>
+</html>
