@@ -36,7 +36,7 @@ Thank you for your time and consideration. I look forward to your positive respo
 Sincerely,
 
 Sumi Akter
-BNMC Registered Staff Nurse
+BNMC Registered Senior Staff Nurse
 BNMC Registration No: 102293
 Phone: +880 1771 665392
 Email: sumiakter102293@gmail.com
@@ -75,7 +75,7 @@ Thank you for your time and consideration. I look forward to your positive respo
 Sincerely,
 
 Sumi Akter
-BNMC Registered Staff Nurse
+BNMC Registered Senior Staff Nurse
 BNMC Registration No: 102293
 Phone: +880 1771 665392
 Email: sumiakter102293@gmail.com
